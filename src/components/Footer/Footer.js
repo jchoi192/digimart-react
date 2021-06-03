@@ -1,6 +1,8 @@
+import styles from './Footer.module.css'
+
 const Footer = () => (
- <div>
-     <p>Coptyright © DigiMart 2021 All Rights Reserved</p>
+ <div className={styles.Footer}>
+     <p>Copyright © DigiMart 2021 All Rights Reserved</p>
  </div>   
 );
 

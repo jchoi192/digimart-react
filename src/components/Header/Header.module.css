@@ -1,0 +1,17 @@
+.Header nav{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.Header h2 { 
+    display: flex;
+    color: red;
+    padding-left: 10px;
+    flex-grow: 1;
+}
+
+.Header a {
+    padding-right: 18px;
+    text-align: right;
+}
