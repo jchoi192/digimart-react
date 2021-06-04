@@ -17,3 +17,16 @@ h1 {
   padding: 10px;
 }
 
+.ListingCard {
+  border: 1px solid black;
+  
+  margin: 20px
+
+}
+
+.CardWords {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}

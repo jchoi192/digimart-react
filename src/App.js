@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Header from './components/Header/Header'
 import Footer from './components/Footer/Footer'
 import './App.css';
@@ -20,7 +20,22 @@ function App() {
       category: 'Art',
       price: ''
     }
-  })
+  });
+
+  useEffect(function() {
+    async function getAppData() {
+      const listings = await fetch('http://localhost:3001/api/listings')
+      .then(res => res.json());
+      
+      setState(prevState => ({
+        ...prevState,
+        listings
+      }));
+    }
+
+    getAppData();
+  }, []);
+
   
   function addListing(e) {
     e.preventDefault();
@@ -83,18 +98,22 @@ function App() {
       </form>
         {state.listings.map((l, i) => (
       <div key={i}>
-        <article>
-            <div>{l.title}</div> 
-            <div>{l.url}</div>
-            <div>{l.description}</div>
-            <div>{l.category}</div>
-            <div>{l.price}</div>
-            <div 
+        <article className='ListingCard'>
+          <div className='CardImage'>
+            IMAGE GOES HERE
+          </div>
+          <div className='CardWords'>
+            <div>Title: {l.title}</div> 
+            <div>Price: {l.price}</div>
+            <div>Category: {l.category}</div>
+            <div>Description: {l.description}</div>
+            </div>
+            <button 
               // onClick={() => handleEdit(l._id)}
-              >Edit</div>
-            <div 
+              >Edit</button>
+            <button 
               // onClick={() => handleDelete(s._id)}
-              >Delete</div>
+              >Delete</button>
         </article>
         </div>
         ))}
