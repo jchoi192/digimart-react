@@ -37,18 +37,30 @@ function App() {
   }, []);
 
   
-  function addListing(e) {
+  async function handleSubmit(e) {
     e.preventDefault();
-    setState({
-      listings: [...state.listings, state.newListing],
-      newListing: {
-        title: '',
-        url: '',
-        description: '',
-        category: 'Art',
-        price: ''
-      }
-    })
+
+    try {
+      const listing = await fetch('http://localhost:3001/api/listings', {
+        method: 'POST',
+        headers: {'Content-type': 'Application/json'},
+        body: JSON.stringify(state.newListing)
+      })
+      .then(res => res.json())
+        setState({
+          listings: [...state.listings, listing],
+          newListing: {
+            title: '',
+            url: '',
+            description: '',
+            category: 'Art',
+            price: ''
+          }
+        });
+    } catch(error) {
+      console.log('handleSumbit try/catch block')
+      alert('try again')
+    }
   }
 
   function handleChange(e){
@@ -66,7 +78,7 @@ function App() {
       <Header />
       <div className='App-Body'>
       <h1>Create New Item</h1>
-      <form className='CreateForm' onSubmit={addListing}>
+      <form className='CreateForm' onSubmit={handleSubmit}>
         <label>
           <span>Title</span>
           <input name='title' value={state.newListing.name} onChange={handleChange} />
