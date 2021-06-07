@@ -63,7 +63,7 @@ async function handleSubmit(e) {
           }
         }));
       } catch {
-
+        alert('error')
       }
     } else {
       try {
@@ -108,6 +108,20 @@ async function handleSubmit(e) {
       newListing: listingToEdit,
       editMode: true,
     }));
+  }
+
+  async function handleDelete(id, error) {
+    try {
+      const listings = await fetch(`http://localhost:3001/api/listings/${id}`, {
+        method: 'DELETE'
+      }).then(res => res.json());
+      setState(prevState => ({
+        ...prevState,
+        listings
+      }))
+    } catch {
+      console.log(error)
+    }
   }
 
   return (
@@ -162,7 +176,8 @@ async function handleSubmit(e) {
               onClick={() => handleEdit(l._id)}
               >Edit</button>
             <button 
-              // onClick={() => handleDelete(s._id)}
+              className='DeleteBtn'
+              onClick={() => handleDelete(l._id)}
               >Delete</button>
         </article>
         </div>
