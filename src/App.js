@@ -19,7 +19,8 @@ function App() {
       description: '',
       category: 'Art',
       price: ''
-    }
+    },
+    editMode: false
   });
 
   useEffect(function() {
@@ -37,18 +38,56 @@ function App() {
   }, []);
 
   
-  function addListing(e) {
+async function addListing(e) {
     e.preventDefault();
-    setState({
-      listings: [...state.listings, state.newListing],
-      newListing: {
-        title: '',
-        url: '',
-        description: '',
-        category: 'Art',
-        price: ''
+
+    if (state.editMode){
+      try {
+        const { title, url, description, category, price, _id } = state.newListing
+        const listings = await fetch(`http://localhost:3001/api/listings/${_id}`, {
+          method: 'PUT',
+          headers: {'Content-type': 'Application/json'},
+          body: JSON.stringify({ title, url, description, category, price })
+        }).then(res => res.json());
+
+        setState(prevState => ({
+          ...prevState,
+          listings,
+          editMode: false,
+          newListing: {
+            title: '',
+            url: '',
+            description: '',
+            category: 'Art',
+            price: ''
+          }
+        }));
+      } catch {
+
       }
-    })
+    } else {
+      try {
+        const listing = await fetch('http://localhost:3001/api/listings', {
+          method: 'POST',
+          headers: {'Content-type': 'Application/json'},
+          body: JSON.stringify(state.newListing)
+        })
+        .then(res => res.json())
+          setState({
+            listings: [...state.listings, listing],
+            newListing: {
+              title: '',
+              url: '',
+              description: '',
+              category: 'Art',
+              price: ''
+            }
+          });
+      } catch(error) {
+        console.log('handleSumbit try/catch block')
+        alert('try again')
+      }
+    }
   }
 
   function handleChange(e){
@@ -57,7 +96,17 @@ function App() {
         newListing: {
           ...prevState.newListing,
           [e.target.name]: e.target.value
-        }
+        },
+        editMode: true
+    }));
+  }
+
+  function handleEdit(id) {
+    const listingToEdit = state.listings.find(listing => listing._id === id);
+    setState(prevState => ({
+      ...prevState,
+      newListing: listingToEdit,
+      editMode: true,
     }));
   }
 
@@ -69,7 +118,7 @@ function App() {
       <form className='CreateForm' onSubmit={addListing}>
         <label>
           <span>Title</span>
-          <input name='title' value={state.newListing.name} onChange={handleChange} />
+          <input name='title' value={state.newListing.title} onChange={handleChange} />
         </label>
         <label>
           <span>URL</span>
@@ -94,7 +143,7 @@ function App() {
           <span>Price</span>
           <input type='number' name='price' value={state.newListing.price} onChange={handleChange} />
         </label>
-        <button className='CreateButton'>Create</button>
+        <button className='SubmitButton'>{state.editMode ? 'Edit' : 'Create'}</button>
       </form>
         {state.listings.map((l, i) => (
       <div key={i}>
@@ -109,7 +158,8 @@ function App() {
             <div>Description: {l.description}</div>
             </div>
             <button 
-              // onClick={() => handleEdit(l._id)}
+              className='EditBtn'
+              onClick={() => handleEdit(l._id)}
               >Edit</button>
             <button 
               // onClick={() => handleDelete(s._id)}
