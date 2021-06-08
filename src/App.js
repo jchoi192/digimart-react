@@ -124,11 +124,17 @@ async function handleSubmit(e) {
     }
   }
 
+  const uploadImage = files => {
+    console.log(files[0])
+    
+  }
+  
+
   return (
     <div className="App">
       <Header />
       <div className='App-Body'>
-      <h1>Create New Item</h1>
+      <h1>{state.editMode ? 'Edit Item' : 'Create New Item'}</h1>
       <form className='CreateForm' onSubmit={handleSubmit}>
         <label>
           <span>Title</span>
@@ -136,7 +142,7 @@ async function handleSubmit(e) {
         </label>
         <label>
           <span>URL</span>
-          <input name='url' value={state.newListing.url} onChange={handleChange} />
+          <input name='url' type='file' value={state.newListing.url} onChange={event => uploadImage(event.target.files)} />
         </label>
         <label>
           <span>Description</span>
@@ -157,7 +163,7 @@ async function handleSubmit(e) {
           <span>Price</span>
           <input type='number' name='price' value={state.newListing.price} onChange={handleChange} />
         </label>
-        <button className='SubmitButton'>{state.editMode ? 'Edit' : 'Create'}</button>
+        <button className='SubmitButton'>{state.editMode ? 'Submit' : 'Create'}</button>
       </form>
         {state.listings.map((l, i) => (
       <div key={i}>
