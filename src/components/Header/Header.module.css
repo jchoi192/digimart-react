@@ -14,9 +14,19 @@
 .Header a {
     padding-right: 18px;
     text-align: right;
+    text-decoration: none;
+    color: black
 }
 
-.auth {
+.Header li {
     list-style: none;
     padding-right: 18px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+ul {
+    display: flex;
+    align-items: center;
+    padding-left: 0
 }

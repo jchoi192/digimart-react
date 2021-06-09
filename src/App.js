@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import Header from './components/Header/Header'
 import Footer from './components/Footer/Footer'
+import { auth } from './services/firebase'
 import './App.css';
 
 function App() {
@@ -22,6 +23,10 @@ function App() {
     },
     editMode: false
   });
+  
+  const [userState, setUserState] = useState({
+    user: null,
+  });
 
   useEffect(function() {
     async function getAppData() {
@@ -35,6 +40,8 @@ function App() {
     }
 
     getAppData();
+
+    auth.onAuthStateChanged(user => setUserState({ user }));
   }, []);
 
   
@@ -126,7 +133,9 @@ async function handleSubmit(e) {
 
   return (
     <div className="App">
-      <Header />
+      <Header 
+        user={userState.user} 
+      />
       <div className='App-Body'>
       <h1>Create New Item</h1>
       <form className='CreateForm' onSubmit={handleSubmit}>
