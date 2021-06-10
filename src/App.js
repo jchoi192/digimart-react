@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
-import Header from './components/Header/Header'
-import Footer from './components/Footer/Footer'
+import FormPage from './pages/FormPage/FormPage'
+import MainPage from './pages/MainPage/MainPage'
+import CollectionsPage from './pages/CollectionsPage/CollectionsPage'
 import { auth } from './services/firebase'
 import { 
   createListing, 
@@ -8,7 +9,7 @@ import {
   fetchListing, 
   updateListing 
 } from './services/listing-service'
-import {Route} from 'react-router-dom'
+import { Route, Switch } from 'react-router-dom'
 import './App.css';
 
 function App() {
@@ -129,66 +130,33 @@ async function handleSubmit(e) {
 
   return (
     <div className="App">
-      <Header 
-        user={userState.user} 
-      />
-      <div className='App-Body'>
-      <h1>{state.editMode ? 'Edit Item' : 'Create New Item'}</h1>
-      <form className='CreateForm' onSubmit={handleSubmit}>
-        <label>
-          <span>Title</span>
-          <input name='title' value={state.newListing.title} onChange={handleChange} />
-        </label>
-        <label>
-          <span>URL</span>
-          <input name='url' value={state.newListing.url} onChange={handleChange} />
-        </label>
-        <label>
-          <span>Description</span>
-          <input name='description' value={state.newListing.description} onChange={handleChange} />
-        </label>
-        <label>
-          <span>Category</span>
-          <select name='category' value={state.newListing.category} onChange={handleChange} >
-            <option value="Art">Art</option>
-            <option value="Collectibles">Collectibles</option>
-            <option value="Music">Music</option>
-            <option value="Sports">Sports</option>
-            <option value="Trading Cards">Trading Cards</option>
-            <option value="Miscellaneous">Miscellaneous</option>
-          </select>
-        </label>
-        <label>
-          <span>Price</span>
-          <input type='number' name='price' value={state.newListing.price} onChange={handleChange} />
-        </label>
-        <button className='SubmitButton'>{state.editMode ? 'Edit' : 'Create'}</button>
-      </form>
-        {state.listings.map((listing, idx) => (
-      <div key={idx}>
-        <article className='ListingCard'>
-          <div className='CardImage'>
-            IMAGE GOES HERE
-          </div>
-          <div className='CardWords'>
-            <div>Title: {listing.title}</div> 
-            <div>Price: {listing.price}</div>
-            <div>Category: {listing.category}</div>
-            <div>Description: {listing.description}</div>
-            </div>
-            <button 
-              className='EditBtn'
-              onClick={() => handleEdit(listing._id)}
-              >Edit</button>
-            <button 
-              className='DeleteBtn'
-              onClick={() => handleDelete(listing._id)}
-              >Delete</button>
-        </article>
-        </div>
-        ))}
-      </div>
-      <Footer />
+      <Switch>
+        <Route 
+          expact path ='/form'
+          render={() => (
+            <FormPage 
+              userState={userState} 
+              state={state}
+              handleSubmit={handleSubmit}
+              handleChange={handleChange}
+              handleEdit={handleEdit}
+              handleDelete={handleDelete}
+            />
+          )}
+        />
+        <Route
+          path='/collection'
+          render={() => (
+            <CollectionsPage />
+          )}
+        />
+        <Route
+          path='/'
+          render={() => (
+            <MainPage />
+          )}
+        />
+      </Switch>
     </div>
   );
 }

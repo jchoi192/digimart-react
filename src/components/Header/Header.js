@@ -1,13 +1,14 @@
 import styles from './Header.module.css'
 import { login, logout } from '../../services/firebase';
+import { Link } from 'react-router-dom';
 
 const Header = (props) => (
     <div className={styles.Header}>
         <nav>
             <h2 className='logo'>DigiMart</h2>
-            <a href="/home">Home</a>
-            <a href="/search">Search</a>
-            <a href="/mycollection">My Collection</a>
+            <Link to='/'>Home</Link>
+            <Link to='/collection'>My Collection</Link>
+            <Link to='/'>Search</Link>
             <ul>
                 {
                     props.user ? 
