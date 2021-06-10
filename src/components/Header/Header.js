@@ -5,8 +5,9 @@ const Header = (props) => (
     <div className={styles.Header}>
         <nav>
             <h2 className='logo'>DigiMart</h2>
-            <a href="">Search</a>
-            <a href="">My Collection</a>
+            <a href="/home">Home</a>
+            <a href="/search">Search</a>
+            <a href="/mycollection">My Collection</a>
             <ul>
                 {
                     props.user ? 

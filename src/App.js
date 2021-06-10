@@ -2,17 +2,24 @@ import { useState, useEffect } from 'react';
 import Header from './components/Header/Header'
 import Footer from './components/Footer/Footer'
 import { auth } from './services/firebase'
+import { 
+  createListing, 
+  deleteListing, 
+  fetchListing, 
+  updateListing 
+} from './services/listing-service'
+import {Route} from 'react-router-dom'
 import './App.css';
 
 function App() {
 
   const [state, setState] = useState({
     listings: [{ 
-      title: 'Lebron',
-      url: 'www.nike.com',
-      description: 'the best',
-      category: 'Sports',
-      price: '$10'
+      title: '',
+      url: '',
+      description: '',
+      category: '',
+      price: ''
     }],
     newListing: {
       title: '',
@@ -30,8 +37,7 @@ function App() {
 
   useEffect(function() {
     async function getAppData() {
-      const listings = await fetch('http://localhost:3001/api/listings')
-      .then(res => res.json());
+      const listings = await fetchListing();
       
       setState(prevState => ({
         ...prevState,
@@ -54,15 +60,9 @@ async function handleSubmit(e) {
 
     if (state.editMode){
       try {
-        const { title, url, description, category, price, _id } = state.newListing
-        const listings = await fetch(`http://localhost:3001/api/listings/${_id}`, {
-          method: 'PUT',
-          headers: {'Content-type': 'Application/json'},
-          body: JSON.stringify({ title, url, description, category, price })
-        }).then(res => res.json());
+        const listings = await updateListing(state.newListing);
 
-        setState(prevState => ({
-          ...prevState,
+        setState({
           listings,
           editMode: false,
           newListing: {
@@ -72,18 +72,14 @@ async function handleSubmit(e) {
             category: 'Art',
             price: ''
           }
-        }));
+        });
       } catch {
-        alert('error')
+        alert('See updateListing')
       }
     } else {
       try {
-        const listing = await fetch('http://localhost:3001/api/listings', {
-          method: 'POST',
-          headers: {'Content-type': 'Application/json'},
-          body: JSON.stringify(state.newListing)
-        })
-        .then(res => res.json())
+        const listing = await createListing(state.newListing);
+
           setState({
             listings: [...state.listings, listing],
             newListing: {
@@ -95,8 +91,7 @@ async function handleSubmit(e) {
             }
           });
       } catch(error) {
-        console.log('handleSumbit try/catch block')
-        alert('try again')
+        alert('See handleSumbit')
       }
     }
   }
@@ -107,8 +102,7 @@ async function handleSubmit(e) {
         newListing: {
           ...prevState.newListing,
           [e.target.name]: e.target.value
-        },
-        editMode: true
+        }
     }));
   }
 
@@ -121,17 +115,15 @@ async function handleSubmit(e) {
     }));
   }
 
-  async function handleDelete(id, error) {
+  async function handleDelete(id) {
     try {
-      const listings = await fetch(`http://localhost:3001/api/listings/${id}`, {
-        method: 'DELETE'
-      }).then(res => res.json());
+      const listings = await deleteListing(id);
       setState(prevState => ({
         ...prevState,
         listings
-      }))
+      }));
     } catch {
-      console.log(error)
+      alert('See handleDelete')
     }
   }
 
@@ -141,7 +133,7 @@ async function handleSubmit(e) {
         user={userState.user} 
       />
       <div className='App-Body'>
-      <h1>Create New Item</h1>
+      <h1>{state.editMode ? 'Edit Item' : 'Create New Item'}</h1>
       <form className='CreateForm' onSubmit={handleSubmit}>
         <label>
           <span>Title</span>
@@ -172,25 +164,25 @@ async function handleSubmit(e) {
         </label>
         <button className='SubmitButton'>{state.editMode ? 'Edit' : 'Create'}</button>
       </form>
-        {state.listings.map((l, i) => (
-      <div key={i}>
+        {state.listings.map((listing, idx) => (
+      <div key={idx}>
         <article className='ListingCard'>
           <div className='CardImage'>
             IMAGE GOES HERE
           </div>
           <div className='CardWords'>
-            <div>Title: {l.title}</div> 
-            <div>Price: {l.price}</div>
-            <div>Category: {l.category}</div>
-            <div>Description: {l.description}</div>
+            <div>Title: {listing.title}</div> 
+            <div>Price: {listing.price}</div>
+            <div>Category: {listing.category}</div>
+            <div>Description: {listing.description}</div>
             </div>
             <button 
               className='EditBtn'
-              onClick={() => handleEdit(l._id)}
+              onClick={() => handleEdit(listing._id)}
               >Edit</button>
             <button 
               className='DeleteBtn'
-              onClick={() => handleDelete(l._id)}
+              onClick={() => handleDelete(listing._id)}
               >Delete</button>
         </article>
         </div>
