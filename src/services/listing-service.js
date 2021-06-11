@@ -5,15 +5,15 @@ function fetchListing() {
 }
 
 function updateListing({ title, url, description, category, price, _id }) {
-    fetch(`${BASE_URL}/${_id}`, {
+    return fetch(`${BASE_URL}/${_id}`, {
           method: 'PUT',
           headers: {'Content-type': 'Application/json'},
           body: JSON.stringify({ title, url, description, category, price })
         }).then(res => res.json());
 }
 
-function createListing(data) {
-    fetch(BASE_URL, {
+async function createListing(data) {
+    return fetch(BASE_URL, {
           method: 'POST',
           headers: {'Content-type': 'Application/json'},
           body: JSON.stringify(data)
@@ -22,7 +22,7 @@ function createListing(data) {
 }
 
 function deleteListing(id) {
-    fetch(`${BASE_URL}/${id}`, {
+    return fetch(`${BASE_URL}/${id}`, {
         method: 'DELETE'
       }).then(res => res.json());
 }

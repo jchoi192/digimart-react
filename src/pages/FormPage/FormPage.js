@@ -1,5 +1,6 @@
 import Header from '../../components/Header/Header'
 import Footer from '../../components/Footer/Footer'
+import styles from './FormPage.module.css'
 
 const FormPage = (props) => {
     return (
@@ -13,7 +14,7 @@ const FormPage = (props) => {
                 </label>
                 <label>
                 <span>URL</span>
-                <input name='url' value={props.state.newListing.url} onChange={props.handleChange} />
+                <input name='url' type='text' value={props.state.newListing.url} onChange={props.handleChange} />
                 </label>
                 <label>
                 <span>Description</span>
@@ -36,7 +37,7 @@ const FormPage = (props) => {
                 </label>
                 <button className='SubmitButton'>{props.state.editMode ? 'Edit' : 'Create'}</button>
             </form>
-                {props.state.listings.map((listing, idx) => (
+                {props.state.listings.length ? props.state.listings.map((listing, idx) => (
                     <div key={idx}>
                         <article className='ListingCard'>
                         <div className='CardImage'>
@@ -58,7 +59,7 @@ const FormPage = (props) => {
                             >Delete</button>
                         </article>
                     </div>
-                ))}
+                )):null}
             <Footer />
         </div>
     )

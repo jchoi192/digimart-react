@@ -1,0 +1,30 @@
+
+h1 {
+    text-align: center;
+  }
+  
+  .CreateForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-grow: 1;
+  }
+  
+  .App-Body label {
+    margin: 10px;
+  }
+  .App-Body span {
+    padding: 10px;
+  }
+  
+  .ListingCard {
+    border: 1px solid black;
+    margin: 20px
+  }
+  
+  .CardWords {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }

@@ -1,0 +1,61 @@
+.body {
+    background-color: rgb(230, 230, 230);
+    display: flex;
+    flex-grow: 1;
+    flex-direction: column;
+    align-items: center;
+}
+
+.TopSection {
+    display: flex;
+    align-items: center;
+    position: relative;
+    margin: 15px;
+}   
+
+.TopSection a {
+    display: flex;
+    color: red;
+    /* position: absolute; */
+    margin: 10px;
+}
+
+.Link {
+    border-radius: 50px;
+    margin: 10px
+}
+
+.Main-CardImage {
+    display: flex;
+    height: 16rem;
+    width: 16rem;
+    margin: 35px
+}
+
+.MainImage {
+    display: flex;
+    height: 48rem;
+    width: 48rem;
+    margin-left: 50px;
+}
+
+h1 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: Lobster, cursive;
+}
+
+.col {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid black;
+    height: 416px;
+    width: 320px;
+    margin: 20px;
+}
+.col p {
+    font-size: 25px;
+
+}

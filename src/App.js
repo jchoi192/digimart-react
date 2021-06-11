@@ -19,7 +19,7 @@ function App() {
       title: '',
       url: '',
       description: '',
-      category: '',
+      category: 'Art',
       price: ''
     }],
     newListing: {
@@ -48,6 +48,7 @@ function App() {
 
     getAppData();
 
+    // firebase
     const unsubscribe = auth.onAuthStateChanged(user => setUserState({ user }));
     return function() {
       // clean up subscriptions
@@ -68,18 +69,19 @@ async function handleSubmit(e) {
           editMode: false,
           newListing: {
             title: '',
-            url: '',
-            description: '',
-            category: 'Art',
-            price: ''
+              url: '',
+              description: '',
+              category: 'Art',
+              price: ''
           }
         });
-      } catch {
-        alert('See updateListing')
+      } catch(error) {
+       console.log(error)
       }
     } else {
       try {
         const listing = await createListing(state.newListing);
+        console.log(listing, 'listing')
 
           setState({
             listings: [...state.listings, listing],
@@ -92,18 +94,18 @@ async function handleSubmit(e) {
             }
           });
       } catch(error) {
-        alert('See handleSumbit')
+       console.log(error)
       }
     }
   }
 
   function handleChange(e){
     setState(prevState => ({
-        listings: prevState.listings,
-        newListing: {
-          ...prevState.newListing,
-          [e.target.name]: e.target.value
-        }
+      listings: prevState.listings,
+      newListing: {
+        ...prevState.newListing,
+        [e.target.name]: e.target.value
+      }
     }));
   }
 
@@ -123,8 +125,8 @@ async function handleSubmit(e) {
         ...prevState,
         listings
       }));
-    } catch {
-      alert('See handleDelete')
+    } catch(error) {
+     console.log(error)
     }
   }
 
