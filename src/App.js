@@ -101,7 +101,7 @@ async function handleSubmit(e) {
 
   function handleChange(e){
     setState(prevState => ({
-      listings: prevState.listings,
+      ...prevState,
       newListing: {
         ...prevState.newListing,
         [e.target.name]: e.target.value
@@ -143,14 +143,19 @@ async function handleSubmit(e) {
               handleChange={handleChange}
               handleEdit={handleEdit}
               handleDelete={handleDelete}
-            />
-          )}
-        />
+              />
+              )}
+              />
         <Route
-          path='/collection'
+          path='/collections'
           render={() => (
             <CollectionsPage 
             userState={userState} 
+            state={state}
+            handleSubmit={handleSubmit}
+            handleChange={handleChange}
+            handleEdit={handleEdit}
+            handleDelete={handleDelete}
             />
           )}
         />

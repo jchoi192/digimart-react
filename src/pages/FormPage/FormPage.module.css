@@ -22,9 +22,29 @@ h1 {
   padding: 10px;
 }
 
-.ListingCard {
+.Cards {
+  display: flex;
+  flex-direction: row;
+}
+
+.Card {
   border: 1px solid black;
-  margin: 20px
+  margin: 20px;
+  display: flex;
+  flex-direction: column;
+  width: 500px
+}
+
+.CardImage {
+  display: flex;
+  justify-content: center;
+}
+
+.controls {
+  display: flex;
+  justify-content: center;
+  margin: 10px;
+  padding-left: 30px
 }
 
 .CardWords {

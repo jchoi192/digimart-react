@@ -8,7 +8,7 @@ const Header = (props) => (
             <h2 className='logo'>DigiMart</h2>
             <ul>
             <Link to='/'>Home</Link>
-            <Link to='/collection'>My Collection</Link>
+            <Link to='/collections'>My Collection</Link>
             <Link to='/'>Search</Link>
                 {
                     props.userState.user ? 

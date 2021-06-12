@@ -1,0 +1,49 @@
+.body {
+    display: flex;
+    flex-grow: 1;
+    background-color: rgb(206, 206, 206);;
+}
+
+.Cards {
+    display: flex;
+    flex-direction: row;
+  }
+  
+.Card {
+    border: 1px solid black;
+    margin: 20px;
+    display: flex;
+    flex-direction: column;
+    width: 500px
+}
+  
+.CardImage {
+    display: flex;
+    justify-content: center;
+}
+  
+.controls {
+    display: flex;
+    justify-content: center;
+    margin: 10px;
+    padding-left: 30px
+}
+  
+.CardWords {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+  
+.mb3 {
+    width: 23rem;
+}
+  
+.formcontrol {
+    width: 23rem;
+}
+  
+.btn {
+    margin: 40px;
+}

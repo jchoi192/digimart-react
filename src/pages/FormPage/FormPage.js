@@ -1,6 +1,8 @@
 import Header from '../../components/Header/Header'
 import Footer from '../../components/Footer/Footer'
 import styles from './FormPage.module.css'
+import { Link } from 'react-router-dom';
+
 
 const FormPage = (props) => {
     return (
@@ -51,8 +53,8 @@ const FormPage = (props) => {
                 <button class="btn btn-secondary" style={{margin:'20px'}}>{props.state.editMode ? 'Edit' : 'Submit'}</button>
             </form>
                 {props.state.listings.length ? props.state.listings.map((listing, idx) => (
-                    <div key={idx}>
-                        <article className={styles.ListingCard}>
+                    <div className={styles.Cards} key={idx}>
+                        <article className={styles.Card}>
                                 <div className={styles.row}>
                                     <div className={styles.col}>
                                         <div className={styles.CardImage}>
@@ -66,14 +68,16 @@ const FormPage = (props) => {
                                         </div>
                                     </div>
                                 </div>
-                            <button 
-                            className={styles.EditBtn}
-                            onClick={() => props.handleEdit(listing._id)}
-                            >Edit</button>
-                            <button 
-                            className={styles.DeleteBtn}
-                            onClick={() => props.handleDelete(listing._id)}
-                            >Delete</button>
+                            <div className={styles.controls}>
+                                <button 
+                                className={styles.EditBtn}
+                                onClick={() => props.handleEdit(listing._id)}
+                                >Edit</button>
+                                <button 
+                                className={styles.DeleteBtn}
+                                onClick={() => props.handleDelete(listing._id)}
+                                >Delete</button>
+                            </div>
                         </article>
                     </div>
                 )):null}
