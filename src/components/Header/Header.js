@@ -4,21 +4,21 @@ import { Link } from 'react-router-dom';
 
 const Header = (props) => (
     <div className={styles.Header}>
-        <nav>
+
             <h2 className='logo'>DigiMart</h2>
+            <ul>
             <Link to='/'>Home</Link>
             <Link to='/collection'>My Collection</Link>
             <Link to='/'>Search</Link>
-            <ul>
                 {
-                    props.user ? 
+                    props.userState.user ? 
                     <>
-                    <li>Welcome, {props.user.displayName}</li>
+                    <li>Welcome, {props.userState.user.displayName}</li>
                     <li style={{ textDecoration: 'none'}}>
                         <img 
                         style={{height: '2.8rem', borderRadius: '50%', textDecoration: 'none'}}
-                        src={props.user.photoURL} 
-                        alt={props.user.displayName}/>
+                        src={props.userState.user.photoURL} 
+                        alt={props.userState.user.displayName}/>
                     </li>
                     <li
                         className={styles.auth}
@@ -32,7 +32,7 @@ const Header = (props) => (
                     >Login</li>
                 }
                 </ul>
-        </nav>    
+  
     </div>
 )
 

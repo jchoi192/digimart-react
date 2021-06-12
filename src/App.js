@@ -149,13 +149,17 @@ async function handleSubmit(e) {
         <Route
           path='/collection'
           render={() => (
-            <CollectionsPage />
+            <CollectionsPage 
+            userState={userState} 
+            />
           )}
         />
         <Route
           path='/'
           render={() => (
-            <MainPage />
+            <MainPage 
+              userState={userState} 
+            />
           )}
         />
       </Switch>

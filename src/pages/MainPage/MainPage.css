@@ -1,5 +1,5 @@
 .body {
-    background-color: rgb(230, 230, 230);
+    background-color: rgb(206, 206, 206);
     display: flex;
     flex-grow: 1;
     flex-direction: column;
@@ -22,9 +22,19 @@
 
 .Link {
     border-radius: 50px;
-    margin: 10px
+    margin: 10px;
+    background-color: rgb(232, 232, 232);
+    color: black;
+}
+.Link a {
+    color: black;
+    text-decoration: none;
 }
 
+.LeftButtons {
+    display: flex;
+    justify-content: center;
+}
 .Main-CardImage {
     display: flex;
     height: 16rem;
@@ -44,6 +54,8 @@ h1 {
     align-items: center;
     justify-content: center;
     font-family: Lobster, cursive;
+    margin: 30px;
+
 }
 
 .col {

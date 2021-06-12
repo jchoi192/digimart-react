@@ -1,30 +1,47 @@
 
+.AppBody {
+  background-color: rgb(206, 206, 206);
+}
+
 h1 {
-    text-align: center;
-  }
-  
-  .CreateForm {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    flex-grow: 1;
-  }
-  
-  .App-Body label {
-    margin: 10px;
-  }
-  .App-Body span {
-    padding: 10px;
-  }
-  
-  .ListingCard {
-    border: 1px solid black;
-    margin: 20px
-  }
-  
-  .CardWords {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-  }
+  text-align: center;
+  margin-top: 50px;
+}
+
+.CreateForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-grow: 1;
+}
+
+.AppBody label {
+  margin: 10px;
+}
+.AppBody span {
+  padding: 10px;
+}
+
+.ListingCard {
+  border: 1px solid black;
+  margin: 20px
+}
+
+.CardWords {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.mb3 {
+  width: 23rem;
+}
+
+.formcontrol {
+  width: 23rem;
+}
+
+.btn {
+  margin: 40px;
+}
