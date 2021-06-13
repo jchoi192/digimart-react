@@ -59,7 +59,7 @@ function App() {
   
 async function handleSubmit(e) {
     e.preventDefault();
-
+    alert('Please go to My Collection to see your listing')
     if (state.editMode){
       try {
         const listings = await updateListing(state.newListing);

@@ -3,6 +3,16 @@
   background-color: rgb(206, 206, 206);
 }
 
+.Body {
+  display: flex;
+  justify-content: center;
+
+}
+
+.InnerBody {
+  margin: 0 70px 0 70px;
+}
+
 h1 {
   text-align: center;
   margin-top: 50px;
@@ -24,27 +34,32 @@ h1 {
 
 .Cards {
   display: flex;
-  flex-direction: row;
-}
-
-.Card {
-  border: 1px solid black;
-  margin: 20px;
-  display: flex;
   flex-direction: column;
-  width: 500px
+  border: 1px solid black;
+  height: 45rem;
+  width: 480px;
+  margin: 20px;
 }
 
-.CardImage {
+.container {
   display: flex;
   justify-content: center;
+}
+
+.FormCardImage{
+  display: flex;
+  height: 30rem;
+  margin: 35px;
 }
 
 .controls {
   display: flex;
   justify-content: center;
-  margin: 10px;
-  padding-left: 30px
+  align-items: center;
+}
+
+.ControlsBtn {
+  margin: 20px;
 }
 
 .CardWords {
@@ -60,8 +75,4 @@ h1 {
 
 .formcontrol {
   width: 23rem;
-}
-
-.btn {
-  margin: 40px;
 }

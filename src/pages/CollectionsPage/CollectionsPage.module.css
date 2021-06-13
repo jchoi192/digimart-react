@@ -1,7 +1,20 @@
+.CollectionPage {
+    background-color: rgb(206, 206, 206);
+    display: flex;
+    flex-direction: column;
+}
+
+h1 {
+    text-align: center;
+    margin-top: 50px;
+  }
+
 .body {
     display: flex;
     flex-grow: 1;
-    background-color: rgb(206, 206, 206);;
+    background-color: rgb(206, 206, 206);
+    flex-wrap: wrap;  
+    justify-content: center;
 }
 
 .Cards {
@@ -14,19 +27,24 @@
     margin: 20px;
     display: flex;
     flex-direction: column;
-    width: 500px
+    /* width: 500px; */
+    align-items: stretch;
 }
   
 .CardImage {
     display: flex;
     justify-content: center;
+    width: 30rem;
 }
   
 .controls {
     display: flex;
     justify-content: center;
-    margin: 10px;
-    padding-left: 30px
+    align-items: center;
+  }
+  
+.ControlsBtn {
+    margin: 20px;
 }
   
 .CardWords {

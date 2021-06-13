@@ -20,7 +20,6 @@
     align-items: center;
     font-family: Lobster, cursive;
     flex-grow: 1;
-
 }
 
 .Header a {
@@ -28,7 +27,6 @@
     text-decoration: none;
     color: white;
     display: flex;
-    
 }
 
 .Header li {
@@ -38,7 +36,6 @@
     color: white;
     display: flex;
     cursor: pointer;
-
 }
 
 .Header ul {
@@ -47,5 +44,4 @@
     justify-content: center;
     text-align: right;
     margin: 0;
-
 }
