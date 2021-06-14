@@ -13,10 +13,10 @@ const Header = (props) => (
     </h2>
     <ul>
         <Link to='/'>Home</Link>
+        <Link to='/form'>New Listing</Link>
         <Link to='/collections'>My Collection</Link>
         <Link to='/'>Search</Link>
-        {
-        props.userState.user ?
+        {props.userState.user ?
         <>
             <li>Welcome, {props.userState.user.displayName}</li>
             <li style={{ textDecoration: 'none'}}>

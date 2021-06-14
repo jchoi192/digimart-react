@@ -36,6 +36,8 @@ function App() {
     user: null,
   });
 
+  const [image, setImage] = useState('')
+
   useEffect(function() {
     async function getAppData() {
       const listings = await fetchListing();
@@ -143,6 +145,8 @@ async function handleSubmit(e) {
               handleChange={handleChange}
               handleEdit={handleEdit}
               handleDelete={handleDelete}
+              image={image}
+              setImage={setImage}
               />
               )}
               />
@@ -156,6 +160,8 @@ async function handleSubmit(e) {
             handleChange={handleChange}
             handleEdit={handleEdit}
             handleDelete={handleDelete}
+            image={image}
+            setImage={setImage}
             />
           )}
         />

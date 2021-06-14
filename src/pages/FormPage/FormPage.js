@@ -1,9 +1,26 @@
 import Header from '../../components/Header/Header'
 import Footer from '../../components/Footer/Footer'
 import styles from './FormPage.module.css'
-import { Link } from 'react-router-dom';
+import Axios from 'axios';
+import { useState } from 'react';
 
 const FormPage = (props) => {
+
+const [imageSelected, setImageSelected] = useState('');
+
+const uploadImage = () => {
+    const formData = new FormData()
+    formData.append('file', imageSelected)
+    formData.append('upload_preset', 'j3q1qwb8')
+
+    Axios.post(
+        'https://api.cloudinary.com/v1_1/seir-alita/image/upload', formData)
+    .then((res) => {
+        props.setImage(res.data.url);
+    })
+};
+
+
 return (
 <div className={styles.AppBody}>
     <Header userState={props.userState} />
@@ -20,8 +37,12 @@ return (
                 </label>
                 <div class="mb-3" className={styles.formcontrol}>
                     <label for="formFile" class="form-label">Upload File</label>
-                    <input name='url' class="form-control" type="file" value={props.state.newListing.url}
-                        onChange={props.handleChange} />
+                    <input name='url' class="form-control" type='file' 
+                    // value={props.state.newListing.url} 
+                        onChange={(e) => {
+                            setImageSelected(e.target.files[0]);
+                        }}
+                        />
                 </div>
                 <label>
                     <div class="mb-3" className={styles.mb3}>
@@ -32,10 +53,12 @@ return (
                 </label>
                 <label className={styles.mb3}>
                     <label for="exampleFormControlInput1" class="form-label">Category</label>
-                    <select class="form-select form-select-sm" aria-label=".form-select-sm example" name='category'
-                        value={props.state.newListing.category} onChange={props.handleChange}
-                        style={{width:'23rem', height:'38px'}}>
-                        <option selected>Open this select menu</option>
+                    <select 
+                        class="form-select" 
+                        name='category'
+                        value={props.state.newListing.category} 
+                        onChange={props.handleChange}
+                        style={{width:'23rem', height:'38px'}}> Open this select menu
                         <option value="Art">Art</option>
                         <option value="Collectibles">Collectibles</option>
                         <option value="Music">Music</option>
@@ -51,18 +74,9 @@ return (
                             onChange={props.handleChange} />
                     </div>
                 </label>
-                <button class="btn btn-secondary" style={{margin:'20px'}}>{props.state.editMode ? 'Edit' :
+                <button onClick={uploadImage} class="btn btn-secondary" style={{margin:'20px'}}>{props.state.editMode ? 'Edit' :
                     'Submit'}</button>
             </form>
-        </div>
-    </div>
-    <div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
-        <div class="toast-body">
-            Hello, world! This is a toast message.
-            <div class="mt-2 pt-2 border-top">
-                <button type="button" class="btn btn-primary btn-sm">Take action</button>
-                <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="toast">Close</button>
-            </div>
         </div>
     </div>
     <Footer />

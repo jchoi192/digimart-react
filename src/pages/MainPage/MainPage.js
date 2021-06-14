@@ -1,8 +1,8 @@
 import Header from '../../components/Header/Header'
 import Footer from '../../components/Footer/Footer'
 import './MainPage.css'
-import { Link, Route } from 'react-router-dom'
-import ReactPlayer from 'react-player'
+import { Link } from 'react-router-dom'
+import { Image } from 'cloudinary-react';
 
 const MainPage = (props) => (
 <div>

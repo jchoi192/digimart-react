@@ -2,6 +2,8 @@ import Header from '../../components/Header/Header'
 import Footer from '../../components/Footer/Footer'
 import styles from './CollectionsPage.module.css'
 import { Link } from 'react-router-dom';
+import { Image } from 'cloudinary-react';
+
 
 const CollectionsPage = (props) => (
 <div>
@@ -17,22 +19,65 @@ const CollectionsPage = (props) => (
                     <div className={styles.row}>
                         <div className={styles.col}>
                             <div>
-                                <img className={styles.CardImage}
-                                    src="http://res.cloudinary.com/ybmedia/image/upload/c_crop,h_625,w_1111,x_532,y_77/c_fill,f_auto,h_495,q_auto,w_880/v1/m/1/9/19ae89122ea433d4a83d011eb7b0be115479be41/lebron-exits-lakers-game-5-blowout-loss-five.jpg"
-                                    alt="" />
+                                <Image style={{width: '300px'}} cloudName='seir-alita' publicId={props.image} />
                             </div>
                             <div className={styles.CardWords}>
-                                <div>Title: {listing.title}</div>
-                                <div>Price: {listing.price}</div>
-                                <div>Category: {listing.category}</div>
-                                <div>Description: {listing.description}</div>
+                                <div>{listing.title}</div>
+                                <div>
+                                    <div>{listing.price}</div>
+                                    <div>List Price </div>
+                                </div>
+                                
+                                <div>
+                                    <div>{listing.category}</div>
+                                    <div>Category</div>
+                                </div>
+                                <div>
+                                    <div>{listing.description}</div>
+                                    <div>Description</div>
+                                </div>
+                                <div>
+                                    {props.userState.user ?
+                                    <>
+                                        <div>Owner {props.userState.user.displayName}</div>
+                                        <div style={{ textDecoration: 'none'}}>
+                                            <img style={{height: '2.8rem', borderRadius: '50%', textDecoration: 'none'}}
+                                                src={props.userState.user.photoURL}
+                                                alt={props.userState.user.displayName} />
+                                        </div>
+                                    </>
+                                    :
+                                    <div>Owner: Classified</div>
+                                    }
+                                </div>
+                                {/* <ul>
+
+                                    {props.userState.user ?
+                                    <>
+                                        <li> Owner {props.userState.user.displayName}
+                                            <li />
+                                        <li>
+                                            <img style={{height: '2.8rem', borderRadius: '50%', textDecoration: 'none'}}
+                                                src={props.userState.user.photoURL}
+                                                alt={props.userState.user.displayName} />
+                                        </li>
+                                    </>
+                                    :
+
+                                    <img style={{height: '2.8rem', borderRadius: '50%', textDecoration: 'none'}}
+                                        src='https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png'
+                                        alt='img' />
+
+                                    }
+                                </ul> */}
+
                             </div>
                         </div>
                     </div>
                     <div className={styles.controls}>
                         <div className={styles.ControlsBtn}>
                             <button class="btn btn-secondary" onClick={()=> props.handleEdit(listing._id)}>
-                                Edit
+                                <Link to='/formpage' />Edit
                             </button>
                         </div>
                         <div className={styles.ControlsBtn}>
