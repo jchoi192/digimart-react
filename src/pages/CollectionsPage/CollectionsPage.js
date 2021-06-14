@@ -19,58 +19,44 @@ const CollectionsPage = (props) => (
                     <div className={styles.row}>
                         <div className={styles.col}>
                             <div>
-                                <Image style={{width: '300px'}} cloudName='seir-alita' publicId={props.image} />
+                                <Image className={styles.CardImage} cloudName='seir-alita' publicId={props.image} />
                             </div>
                             <div className={styles.CardWords}>
-                                <div>{listing.title}</div>
-                                <div>
-                                    <div>{listing.price}</div>
-                                    <div>List Price </div>
+                                <h3 className={styles.title}>
+                                    {listing.title}
+                                </h3>
+                                <div className={styles.priceCategory}>
+                                    <div className={styles.price}>
+                                        <div>{listing.price} eth</div>
+                                        <div className={styles.subtitle}>List Price </div>
+                                    </div>
+                                    <div className={styles.category}>
+                                        <div>{listing.category}</div>
+                                        <div className={styles.subtitle}>Category</div>
+                                    </div>
                                 </div>
-                                
-                                <div>
-                                    <div>{listing.category}</div>
-                                    <div>Category</div>
+                                <div className={styles.description}>
+                                    <div style={{display:'flex', flexWrap:'wrap'}}>{listing.description}</div>
+                                    <div className={styles.subtitle}>Description</div>
                                 </div>
-                                <div>
-                                    <div>{listing.description}</div>
-                                    <div>Description</div>
-                                </div>
+                                -----------------------------------
                                 <div>
                                     {props.userState.user ?
                                     <>
-                                        <div>Owner {props.userState.user.displayName}</div>
+                                    <div className={styles.ownerSection}>
+                                        <div className={styles.subtitle}>Owner</div>
                                         <div style={{ textDecoration: 'none'}}>
-                                            <img style={{height: '2.8rem', borderRadius: '50%', textDecoration: 'none'}}
+                                            <img style={{height: '2.8rem', borderRadius: '50%', textDecoration: 'none', marginRight:'10px'}}
                                                 src={props.userState.user.photoURL}
                                                 alt={props.userState.user.displayName} />
+                                                {props.userState.user.displayName}
                                         </div>
+                                    </div>
                                     </>
                                     :
                                     <div>Owner: Classified</div>
                                     }
-                                </div>
-                                {/* <ul>
-
-                                    {props.userState.user ?
-                                    <>
-                                        <li> Owner {props.userState.user.displayName}
-                                            <li />
-                                        <li>
-                                            <img style={{height: '2.8rem', borderRadius: '50%', textDecoration: 'none'}}
-                                                src={props.userState.user.photoURL}
-                                                alt={props.userState.user.displayName} />
-                                        </li>
-                                    </>
-                                    :
-
-                                    <img style={{height: '2.8rem', borderRadius: '50%', textDecoration: 'none'}}
-                                        src='https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png'
-                                        alt='img' />
-
-                                    }
-                                </ul> */}
-
+                                </div>                              
                             </div>
                         </div>
                     </div>

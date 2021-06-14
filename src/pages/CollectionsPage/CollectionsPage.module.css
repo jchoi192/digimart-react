@@ -17,10 +17,15 @@ h1 {
     justify-content: center;
 }
 
+.col {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 .Cards {
     display: flex;
     flex-direction: row;
-  }
+}
   
 .Card {
     border: 1px solid black;
@@ -34,7 +39,9 @@ h1 {
 .CardImage {
     display: flex;
     justify-content: center;
-    width: 30rem;
+    align-items: center;
+    margin-top: 10px;
+    width: 300px
 }
   
 .controls {
@@ -53,7 +60,45 @@ h1 {
     align-items: center;
     justify-content: center;
 }
-  
+
+.title{
+    display: flex;
+    flex-wrap: wrap;
+    overflow-wrap: normal;
+
+}
+
+.priceCategory {
+    display: flex;
+    margin: 15px ;
+    
+}
+
+.price{
+    color: #0a3867;
+    margin: 0 30px
+}
+
+.category{
+    color: #0a3867;
+    margin: 0 30px
+}
+
+.description {
+    color: #0a3867;
+    
+}
+
+.subtitle {
+    font-size: .7rem;
+    color: #1c65b3
+}
+.ownerSection {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
 .mb3 {
     width: 23rem;
 }

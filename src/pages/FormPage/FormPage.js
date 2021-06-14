@@ -70,7 +70,7 @@ return (
                 <label>
                     <div class="mb-3" className={styles.mb3}>
                         <label for="exampleFormControlInput1" class="form-label">Price</label>
-                        <input type='number' class="form-control" name='price' value={props.state.newListing.price}
+                        <input type='number' class="form-control" name='price' value={props.state.newListing.price} placeholder='eth'
                             onChange={props.handleChange} />
                     </div>
                 </label>
