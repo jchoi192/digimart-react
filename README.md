@@ -13,27 +13,24 @@ A web marketplace for buying and selling NFT's (Non-Fungible Token) with Ether a
 - Cloudinary
 
 ## Initial Wireframes
-![wireframe](./public/media/images/Digimart-homepage.png)
-![wireframe](./public/media/images/Digimart-create.png)
-![wireframe](./public/media/images/Digimart-my-collection.png)
+![wireframe](./public/media/images/DigiMart-homepage.png)
+![wireframe](./public/media/images/DigiMart-create.png)
+![wireframe](./public/media/images/DigiMart-my-collection.png)
 
 ## ERDs
-![wireframe](./public/media/images/Digimart-ERD.png)
+![wireframe](./public/media/images/DigiMart-ERD.png)
 
 ## Screenshots
-![wireframe](./public//media/images/screenshot-mainpage.png)
-![wireframe](./public//media/images/screenshot-formpage.png)
-![wireframe](./public//media/images/screenshot-collectionspage.png)
+![wireframe](./public/media/images/screenshot-mainpage.png)
+![wireframe](./public/media/images/screenshot-formpage.png)
+![wireframe](./public/media/images/screenshot-collectionspage.png)
 
 ## Getting Started
 [Click Here]() to get started
 [Click Here](/https://github.com/jchoi192/digimart-backend) for the backend repository
 
-Getting Started: Links to the project's planning (Trello board) and the deployed app on Heroku.
-
 ## Unsolved Problems
 - Users are unable to add more than one photo via Cloudinary
--
 
 ## Future Enhancements
 - Allow users to go to a Marketplace where NFT's are available for purchase
