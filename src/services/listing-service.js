@@ -1,4 +1,4 @@
-const BASE_URL = 'https://digimart-app.herokuapp.com/api/listings'
+const BASE_URL = 'https://digimart-backend.herokuapp.com/api/listings'
 
 function fetchListing() {
     return fetch(BASE_URL).then(res => res.json());
