@@ -1,0 +1,50 @@
+.CardWords {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.Image2 {
+    display: flex;
+    height: 18rem;
+    width: 18rem;
+    margin: 10px
+}
+
+.Image3 {
+    display: flex;
+    justify-content: center;
+    height: 12rem;
+    width: 18rem;
+    margin: 50px 0 60px 0;
+}
+.title{
+    display: flex;
+    flex-wrap: wrap;
+    text-overflow: ellipsis;
+}
+
+.priceCategory {
+    display: flex;
+    margin: 15px ;
+}
+
+.price{
+    color: #0a3867;
+    margin: 0 30px
+}
+
+.category{
+    color: #0a3867;
+    margin: 0 30px
+}
+
+.description {
+    color: #0a3867;
+    
+}
+
+.subtitle {
+    font-size: .7rem;
+    color: #1c65b3
+}
