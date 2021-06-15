@@ -13,8 +13,8 @@ A web marketplace for buying and selling NFT's (Non-Fungible Token) with Ether a
 - Cloudinary
 
 ## Initial Wireframes
-![wireframe](./public/media/images/DigiMart-homepage.png)
-![wireframe](./public/media/images/DigiMart-create.png)
+![wireframe](./public/media/images/Digimart-homepage.png)
+![wireframe](./public/media/images/Digimart-create.png)
 ![wireframe](./public/media/images/DigiMart-my-collection.png)
 
 ## ERDs
