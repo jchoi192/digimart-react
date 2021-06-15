@@ -31,6 +31,7 @@ A web marketplace for buying and selling NFT's (Non-Fungible Token) with Ether a
 
 ## Unsolved Problems
 - Users are unable to add more than one photo via Cloudinary
+- If a user clicks the 'Edit' button, they are not taken to the 'Edit Page' automatically
 
 ## Future Enhancements
 - Allow users to go to a Marketplace where NFT's are available for purchase
