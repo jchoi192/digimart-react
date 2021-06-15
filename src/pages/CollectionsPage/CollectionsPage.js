@@ -7,8 +7,8 @@ import { Image } from 'cloudinary-react';
 
 const CollectionsPage = (props) => (
 <div>
-    <div className={styles.CollectionPage}>
         <Header userState={props.userState} />
+    <div className={styles.CollectionPage}>
         <header>
             <h1>My Collection</h1>
         </header>
@@ -76,8 +76,8 @@ const CollectionsPage = (props) => (
             </div>
             )):null}
         </div>
-        <Footer />
     </div>
+        <Footer />
 </div>
 )
 

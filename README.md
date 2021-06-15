@@ -1,31 +1,40 @@
 # DigiMart
 
-A web marketplace for buying and selling NFT's
+A web marketplace for buying and selling NFT's (Non-Fungible Token) with Ether as the primary cryptocurrency.
 
 ## Technologies
+- MongoDB
+- Mongoose.js
+- Express.js
 - React.js
 - Node.js
-- Express.js
-- MongoDB
-- Mongoose
 - Bootstrap CSS
-- Google Fonts
 - Google Firebase
 - Cloudinary
 
-## Screenshots
-![wireframe](./public/images/??.png)
-
-## Wireframes
-![wireframe](./public/images/Digimart-homepage.png)
-![wireframe](./public/images/Digimart-create.png)
-![wireframe](./public/images/Digimart-my-collection.png)
+## Initial Wireframes
+![wireframe](./public/media/images/Digimart-homepage.png)
+![wireframe](./public/media/images/Digimart-create.png)
+![wireframe](./public/media/images/Digimart-my-collection.png)
 
 ## ERDs
-![wireframe](./public/images/Digimart-ERD.png)
+![wireframe](./public/media/images/Digimart-ERD.png)
+
+## Screenshots
+![wireframe](./public//media/images/screenshot-mainpage.png)
+![wireframe](./public//media/images/screenshot-formpage.png)
+![wireframe](./public//media/images/screenshot-collectionspage.png)
 
 ## Getting Started
 [Click Here]() to get started
+[Click Here](/https://github.com/jchoi192/digimart-backend) for the backend repository
+
+Getting Started: Links to the project's planning (Trello board) and the deployed app on Heroku.
+
+## Unsolved Problems
+- Users are unable to add more than one photo via Cloudinary
+-
 
 ## Future Enhancements
-- 
+- Allow users to go to a Marketplace where NFT's are available for purchase
+- Allow users to add animations and video files
