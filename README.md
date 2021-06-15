@@ -26,8 +26,8 @@ A web marketplace for buying and selling NFT's (Non-Fungible Token) with Ether a
 ![wireframe](./public/media/images/screenshot-collectionspage.png)
 
 ## Getting Started
-[Click Here]() to get started
-[Click Here](/https://github.com/jchoi192/digimart-backend) for the backend repository
+[Click Here](https://digimart-app.netlify.app) to get started
+[Click Here](https://github.com/jchoi192/digimart-backend) for the backend repository
 
 ## Unsolved Problems
 - Users are unable to add more than one photo via Cloudinary
